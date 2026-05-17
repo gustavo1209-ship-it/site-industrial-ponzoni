@@ -53,7 +53,8 @@ body{font-family:'Myriad Pro','Myriad','Gill Sans','Trebuchet MS',Arial,sans-ser
 #map-controls{position:fixed;bottom:52px;left:14px;display:flex;flex-direction:column;gap:6px;z-index:200;}
 .ctrl-btn{background:var(--cream-lt);border:1px solid var(--cream-dk);color:var(--wine);width:36px;height:36px;border-radius:9px;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(74,10,18,.12);transition:all .15s;font-weight:700;}
 .ctrl-btn:hover{background:var(--wine);color:#fff;border-color:var(--wine-dk);}
-#compass{position:fixed;bottom:52px;right:14px;width:64px;height:64px;z-index:200;filter:drop-shadow(0 3px 8px rgba(74,10,18,.22));}
+#compass{width:36px;height:36px;z-index:200;filter:drop-shadow(0 3px 8px rgba(74,10,18,.22));flex-shrink:0;}
+#home-compass-row{display:flex;flex-direction:row;align-items:center;gap:6px;}
 #coords{position:fixed;bottom:42px;left:50%;transform:translateX(-50%);background:rgba(74,10,18,.75);color:rgba(255,255,255,.75);font-size:12px;padding:3px 10px;border-radius:10px;z-index:200;pointer-events:none;font-family:monospace;}
 #info-panel{position:fixed;top:100px;right:14px;background:var(--cream-lt);border:1px solid var(--cream-dk);border-radius:16px;z-index:300;width:270px;box-shadow:0 8px 32px rgba(74,10,18,.18);display:none;overflow:hidden;}
 #info-panel.visible{display:block;}
@@ -76,7 +77,7 @@ body{font-family:'Myriad Pro','Myriad','Gill Sans','Trebuchet MS',Arial,sans-ser
 #info-footer{padding:0 18px 16px;}
 #whatsapp-btn{width:100%;padding:12px;background:#25D366;border:none;color:#fff;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-family:'Myriad Pro','Myriad','Gill Sans','Trebuchet MS',Arial,sans-serif;transition:background .15s;letter-spacing:.5px;box-shadow:0 2px 8px rgba(37,211,102,.3);}
 #whatsapp-btn:hover{background:#1ebe5a;}
-#social-box{position:fixed;bottom:52px;right:86px;background:var(--cream-lt);border:1px solid var(--cream-dk);border-radius:14px;padding:12px 14px;z-index:200;text-align:center;box-shadow:0 4px 16px rgba(74,10,18,.12);}
+#social-box{position:fixed;bottom:40px;right:14px;background:var(--cream-lt);border:1px solid var(--cream-dk);border-radius:14px;padding:12px 14px;z-index:200;text-align:center;box-shadow:0 4px 16px rgba(74,10,18,.12);}
 #social-box .qr-label{font-size:11px;color:var(--wine);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
 #social-box .insta-handle{font-size:11px;color:var(--text-lt);font-weight:500;margin-top:4px;}
 #social-box img{border-radius:6px;border:2px solid var(--cream-dk);display:block;}
@@ -123,19 +124,20 @@ body{font-family:'Myriad Pro','Myriad','Gill Sans','Trebuchet MS',Arial,sans-ser
 <div id="map-controls">
   <button class="ctrl-btn" id="btn-zoom-in">+</button>
   <button class="ctrl-btn" id="btn-zoom-out">&#8722;</button>
-  <button class="ctrl-btn" id="btn-reset" style="font-size:17px">&#8962;</button>
+  <div id="home-compass-row">
+    <button class="ctrl-btn" id="btn-reset" style="font-size:17px">&#8962;</button>
+    <svg id="compass" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="36" cy="36" r="34" fill="rgba(250,245,242,.92)" stroke="#E0D0C8" stroke-width="1.5"/>
+      <polygon points="36,6 39,36 36,32 33,36" fill="#7A1020"/>
+      <polygon points="36,66 33,36 36,40 39,36" fill="#961222"/>
+      <circle cx="36" cy="36" r="3" fill="#7A1020"/>
+      <text x="36" y="18" text-anchor="middle" font-size="9" font-weight="800" fill="#7A1020" font-family="Myriad Pro,Myriad,Gill Sans,Trebuchet MS,Arial,sans-serif">N</text>
+      <text x="36" y="58" text-anchor="middle" font-size="7" fill="#7A5058" font-family="Myriad Pro,Myriad,Gill Sans,Trebuchet MS,Arial,sans-serif">S</text>
+      <text x="62" y="40" text-anchor="middle" font-size="7" fill="#7A5058" font-family="Myriad Pro,Myriad,Gill Sans,Trebuchet MS,Arial,sans-serif">L</text>
+      <text x="10" y="40" text-anchor="middle" font-size="7" fill="#7A5058" font-family="Myriad Pro,Myriad,Gill Sans,Trebuchet MS,Arial,sans-serif">O</text>
+    </svg>
+  </div>
 </div>
-
-<svg id="compass" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="36" cy="36" r="34" fill="rgba(250,245,242,.92)" stroke="#E0D0C8" stroke-width="1.5"/>
-  <polygon points="36,6 39,36 36,32 33,36" fill="#7A1020"/>
-  <polygon points="36,66 33,36 36,40 39,36" fill="#961222"/>
-  <circle cx="36" cy="36" r="3" fill="#7A1020"/>
-  <text x="36" y="18" text-anchor="middle" font-size="9" font-weight="800" fill="#7A1020" font-family="Myriad Pro,Myriad,Gill Sans,Trebuchet MS,Arial,sans-serif">N</text>
-  <text x="36" y="58" text-anchor="middle" font-size="7" fill="#7A5058" font-family="Myriad Pro,Myriad,Gill Sans,Trebuchet MS,Arial,sans-serif">S</text>
-  <text x="62" y="40" text-anchor="middle" font-size="7" fill="#7A5058" font-family="Myriad Pro,Myriad,Gill Sans,Trebuchet MS,Arial,sans-serif">L</text>
-  <text x="10" y="40" text-anchor="middle" font-size="7" fill="#7A5058" font-family="Myriad Pro,Myriad,Gill Sans,Trebuchet MS,Arial,sans-serif">O</text>
-</svg>
 
 <div id="coords">x:0 y:0</div>
 
