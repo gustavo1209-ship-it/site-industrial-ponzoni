@@ -84,12 +84,17 @@ body{font-family:'Myriad Pro','Myriad','Gill Sans','Trebuchet MS',Arial,sans-ser
 .quadra-label{font-size:28px;fill:rgba(122,16,32,.4);font-weight:800;text-transform:uppercase;letter-spacing:3px;pointer-events:none;}
 #loading-bar{position:fixed;top:86px;left:0;right:0;height:3px;background:rgba(255,255,255,.3);z-index:500;transition:opacity .5s;}
 #loading-bar-fill{height:100%;background:var(--wine-lt);width:0%;transition:width .4s;}
-html{overflow:hidden;overscroll-behavior:none;touch-action:none;}
+html{overflow:hidden;overscroll-behavior:none;touch-action:none;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 #footer-mob{display:none;}
 .ftr-ico{color:rgba(255,255,255,.85);display:flex;align-items:center;transition:color .15s;}
 .ftr-ico:hover{color:rgba(255,220,210,.95);}
 @media(max-width:640px){
   #header{height:60px;padding:0 12px;}
+  #header-right{display:none;}
+  #search-wrap{display:none;}
+  #header-logo img{width:46px;height:46px;}
+  #header-title .main{font-size:16px;letter-spacing:1.5px;}
+  #header-title .sub{font-size:10px;letter-spacing:1px;}
   #map-container{top:60px;bottom:calc(48px + env(safe-area-inset-bottom));}
   #map-controls{bottom:calc(56px + env(safe-area-inset-bottom));}
   #social-box{display:none;}
