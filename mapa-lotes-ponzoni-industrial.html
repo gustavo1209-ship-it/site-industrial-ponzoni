@@ -420,7 +420,7 @@ var pz=null;
 
 function initPZ(){
   try{
-    pz=Panzoom(svgEl,{maxScale:16,minScale:0.08,step:0.3,canvas:true,contain:'outside',handleStartEvent:function(e){e.preventDefault();},touchAction:'none'});
+    pz=Panzoom(svgEl,{maxScale:16,minScale:0.08,step:0.3,canvas:true,handleStartEvent:function(e){e.preventDefault();},touchAction:'none'});
     mapCont.addEventListener('wheel',function(e){e.preventDefault();pz.zoomWithWheel(e);},{passive:false});
   mapCont.addEventListener('touchstart',pz.handleTouchStart,{passive:false});
   mapCont.addEventListener('touchmove',pz.handleTouchMove,{passive:false});
@@ -432,8 +432,8 @@ function resetView(anim){
   if(!pz) return;
   var cw=mapCont.clientWidth,ch=mapCont.clientHeight;
   if(cw<=0||ch<=0)return;
-  var s=Math.max(cw/1442,ch/1484);
-  pz.setOptions({minScale:s});
+  var sMin=Math.min(cw/1442,ch/1484),s=Math.max(cw/1442,ch/1484);
+  pz.setOptions({minScale:sMin});
   if(anim){
     pz.zoom(s,{animate:true});
     setTimeout(function(){pz.pan(cw/2-721*s,ch/2-742*s,{animate:true});},150);
