@@ -420,22 +420,20 @@ var pz=null;
 
 function initPZ(){
   try{
-    pz=Panzoom(svgEl,{maxScale:16,minScale:0.08,step:0.3,contain:'outside'});
+    pz=Panzoom(svgEl,{maxScale:16,minScale:0.08,step:0.3});
     mapCont.addEventListener('wheel',function(e){e.preventDefault();pz.zoomWithWheel(e);},{passive:false});
   }catch(e){console.error('Panzoom erro:',e);}
 }
 
 function resetView(anim){
   if(!pz) return;
-  var cx=1654,cy=900,dw=1392,dh=1390;
+  var cx=1596,cy=929,dw=3192,dh=1858;
   var cw=mapCont.clientWidth,ch=mapCont.clientHeight;
-  var s=Math.min(cw/dw,ch/dh)*0.88;
-  pz.setOptions({contain:false});
+  var s=Math.min(cw/dw,ch/dh)*0.92;
   pz.zoom(s,{animate:!!anim});
   setTimeout(function(){
     pz.pan(cw/2-cx*s,ch/2-cy*s,{animate:!!anim});
-    setTimeout(function(){pz.setOptions({contain:'outside'});},anim?400:50);
-  },anim?200:0);
+  },anim?150:0);
 }
 
 document.getElementById('btn-zoom-in').addEventListener('click',function(){if(pz)pz.zoomIn();});
