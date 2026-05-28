@@ -427,9 +427,9 @@ function initPZ(){
 
 function resetView(anim){
   if(!pz) return;
-  var cx=1596,cy=929,dw=3192,dh=1858;
+  var cx=1665,cy=912,dw=1520,dh=1540;
   var cw=mapCont.clientWidth,ch=mapCont.clientHeight;
-  var s=Math.min(cw/dw,ch/dh)*0.92;
+  var s=Math.min(cw/dw,ch/dh)*0.95;
   pz.zoom(s,{animate:!!anim});
   setTimeout(function(){
     pz.pan(cw/2-cx*s,ch/2-cy*s,{animate:!!anim});
