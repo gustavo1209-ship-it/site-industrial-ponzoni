@@ -427,13 +427,17 @@ function initPZ(){
 
 function resetView(anim){
   if(!pz) return;
-  var cx=1665,cy=912,dw=1520,dh=1540;
+  var cx=1665,cy=912,dw=1484,dh=1528;
   var cw=mapCont.clientWidth,ch=mapCont.clientHeight;
-  var s=Math.min(cw/dw,ch/dh)*0.95;
-  pz.zoom(s,{animate:!!anim});
-  setTimeout(function(){
-    pz.pan(cw/2-cx*s,ch/2-cy*s,{animate:!!anim});
-  },anim?150:0);
+  if(cw<=0||ch<=0)return;
+  var s=Math.min(cw/dw,ch/dh);
+  if(anim){
+    pz.zoom(s,{animate:true});
+    setTimeout(function(){pz.pan(cw/2-cx*s,ch/2-cy*s,{animate:true});},150);
+  } else {
+    pz.zoom(s,{animate:false});
+    pz.pan(cw/2-cx*s,ch/2-cy*s,{animate:false});
+  }
 }
 
 document.getElementById('btn-zoom-in').addEventListener('click',function(){if(pz)pz.zoomIn();});
@@ -533,7 +537,7 @@ srInput.addEventListener('keydown',function(e){
 });
 
 initPZ();
-function tryReset(){if(mapCont.clientWidth>0){resetView(false);}else{setTimeout(tryReset,50);}}setTimeout(tryReset,50);
+function tryReset(){if(mapCont.clientWidth>0&&mapCont.clientHeight>0){resetView(false);setTimeout(function(){resetView(false);},400);}else{setTimeout(tryReset,50);}}setTimeout(tryReset,50);
 loadSheets();
 })();
 </script>
