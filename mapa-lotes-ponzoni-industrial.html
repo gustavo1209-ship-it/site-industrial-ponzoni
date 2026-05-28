@@ -432,8 +432,8 @@ function resetView(anim){
   if(!pz) return;
   var cw=mapCont.clientWidth,ch=mapCont.clientHeight;
   if(cw<=0||ch<=0)return;
-  var sMin=Math.min(cw/1442,ch/1484),s=Math.max(cw/1442,ch/1484);
-  pz.setOptions({minScale:sMin});
+  var s=Math.min(cw/1442,ch/1484);
+  pz.setOptions({minScale:s*0.85});
   if(anim){
     pz.zoom(s,{animate:true});
     setTimeout(function(){pz.pan(cw/2-721*s,ch/2-742*s,{animate:true});},150);
