@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 <style>
 :root{--wine:#7A1020;--wine-dk:#4A0A12;--wine-lt:#961222;--cream:#F5EDE8;--cream-dk:#E0D0C8;--cream-lt:#FAF5F2;--text:#2A0A10;--text-lt:#7A5058;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Myriad Pro','Myriad',Barlow,'Gill Sans','Trebuchet MS',Arial,sans-serif;background:var(--cream);overflow:hidden;height:100vh;width:100vw;color:var(--text);overscroll-behavior:none;touch-action:none;}
+body{font-family:Barlow,'Myriad Pro','Myriad','Gill Sans','Trebuchet MS',Arial,sans-serif;background:var(--cream);overflow:hidden;height:100vh;width:100vw;color:var(--text);overscroll-behavior:none;touch-action:none;}
 #header{position:fixed;top:0;left:0;right:0;height:86px;background:linear-gradient(135deg,var(--wine-dk) 0%,var(--wine) 60%,var(--wine-lt) 100%);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:400;box-shadow:0 2px 16px rgba(74,10,18,.4);}
 #header-logo{display:flex;align-items:center;gap:12px;}
 #header-title .main{font-size:20px;font-weight:800;letter-spacing:2px;color:#FAF5F2;text-transform:uppercase;}
@@ -190,7 +190,7 @@ html{overflow:hidden;overscroll-behavior:none;touch-action:none;-webkit-text-siz
 </div>
 
 <div id="map-container">
-<svg id="svg-root" viewBox="0 0 3192 1858" width="3192" height="1858" xmlns="http://www.w3.org/2000/svg">
+<svg id="svg-root" viewBox="944 170 1442 1484" width="1442" height="1484" xmlns="http://www.w3.org/2000/svg">
   <image href="ponzoni-mapa-bg.jpg" x="0" y="0" width="3192" height="1858"/>
 
   <!-- QUADRA B: 3 lotes -->
@@ -420,7 +420,7 @@ var pz=null;
 
 function initPZ(){
   try{
-    pz=Panzoom(svgEl,{maxScale:16,minScale:0.08,step:0.3,canvas:true,handleStartEvent:function(e){e.preventDefault();},touchAction:'none'});
+    pz=Panzoom(svgEl,{maxScale:16,minScale:0.08,step:0.3,canvas:true,contain:'outside',handleStartEvent:function(e){e.preventDefault();},touchAction:'none'});
     mapCont.addEventListener('wheel',function(e){e.preventDefault();pz.zoomWithWheel(e);},{passive:false});
   mapCont.addEventListener('touchstart',pz.handleTouchStart,{passive:false});
   mapCont.addEventListener('touchmove',pz.handleTouchMove,{passive:false});
@@ -432,14 +432,14 @@ function resetView(anim){
   if(!pz) return;
   var cw=mapCont.clientWidth,ch=mapCont.clientHeight;
   if(cw<=0||ch<=0)return;
-  var s=Math.min(cw/1442,ch/1484);
+  var s=Math.max(cw/1442,ch/1484);
   pz.setOptions({minScale:s});
   if(anim){
     pz.zoom(s,{animate:true});
-    setTimeout(function(){pz.pan(cw/2-1665*s,ch/2-912*s,{animate:true});},150);
+    setTimeout(function(){pz.pan(cw/2-721*s,ch/2-742*s,{animate:true});},150);
   } else {
     pz.zoom(s,{animate:false});
-    pz.pan(cw/2-1665*s,ch/2-912*s,{animate:false});
+    pz.pan(cw/2-721*s,ch/2-742*s,{animate:false});
   }
 }
 
@@ -501,7 +501,7 @@ function focusLot(lid){
   var cx=d.centroid[0],cy=d.centroid[1],s=7;
   pz.zoom(s,{animate:true});
   setTimeout(function(){
-    pz.pan(mapCont.clientWidth/2-cx*s,mapCont.clientHeight/2-cy*s,{animate:true});
+    pz.pan(mapCont.clientWidth/2-(cx-944)*s,mapCont.clientHeight/2-(cy-170)*s,{animate:true});
   },200);
   document.querySelectorAll('.lote.selected').forEach(function(x){x.classList.remove('selected');});
   d.el.classList.add('selected');
