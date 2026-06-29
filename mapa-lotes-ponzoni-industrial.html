@@ -8,7 +8,7 @@
 <style>
 :root{--wine:#7A1020;--wine-dk:#4A0A12;--wine-lt:#961222;--cream:#F5EDE8;--cream-dk:#E0D0C8;--cream-lt:#FAF5F2;--text:#2A0A10;--text-lt:#7A5058;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Myriad Pro','Trebuchet MS',Arial,sans-serif;background:var(--cream);overflow:hidden;height:100vh;height:100dvh;width:100vw;color:var(--text);}
+body{font-family:'Myriad Pro','Trebuchet MS',Arial,sans-serif;backgrounhd:var(--cream);overflow:hidden;height:100vh;height:100dvh;width:100vw;color:var(--text);}
 #header{position:fixed;top:0;left:0;right:0;height:86px;background:linear-gradient(135deg,var(--wine-dk) 0%,var(--wine) 60%,var(--wine-lt) 100%);display:flex;align-items:center;justify-content:space-between;padding:0 20px;z-index:400;box-shadow:0 2px 16px rgba(74,10,18,.4);}
 #header-logo{display:flex;align-items:center;gap:12px;}
 #header-title .main{font-size:20px;font-weight:800;letter-spacing:2px;color:#FAF5F2;text-transform:uppercase;}
@@ -267,7 +267,7 @@ body{font-family:'Myriad Pro','Trebuchet MS',Arial,sans-serif;background:var(--c
   <text class="lot-label" x="1416" y="1382" text-anchor="middle" dominant-baseline="central">D07</text>
 
   <!-- QUADRA E: 6 lotes -->
-  <polygon class="lote sts-3" data-id="E01" data-status="Reservado" data-area="1032.56" data-quadra="E" data-valor="R$ 370.084,36" points="962,1511 1041,1507 1045,1652 964,1654"/>
+  <polygon class="lote sts-2" data-id="E01" data-status="Vendido" data-area="1032.56" data-quadra="E" data-valor="R$ 370.084,36" points="962,1511 1041,1507 1045,1652 964,1654"/>
   <text class="lot-label" x="1003" y="1581" text-anchor="middle" dominant-baseline="central">E01</text>
   <polygon class="lote sts-3" data-id="E02" data-status="Reservado" data-area="1067.74" data-quadra="E" data-valor="R$ 375.526,77" points="1041,1508 1123,1505 1125,1652 1045,1653"/>
   <text class="lot-label" x="1084" y="1580" text-anchor="middle" dominant-baseline="central">E02</text>
@@ -376,7 +376,7 @@ updateStats();
 function loadSheets(){
   var bar=document.getElementById('loading-bar-fill');
   bar.style.width='30%';
-  fetch(GS_URL).then(function(r){return r.text();}).then(function(csv){
+  fetch(GS_URL + '&bust=' + Date.now(), {cache: 'no-store'}).then(function(r){return r.text();}).then(function(csv){
     bar.style.width='80%';
     var rows=csv.trim().split('\n').map(function(row){
       var cols=[],cur='',q=false;
