@@ -357,7 +357,7 @@ function applyStatus(id, status, valor){
   d.status=status; d.valor=valor||''; d.sts=STS_MAP[status]||1;
   d.el.dataset.status=status; d.el.dataset.valor=valor||'';
   var sel = d.el.classList.contains('selected')?' selected':'';
-  d.el.className='lote sts-'+d.sts+sel;
+  d.el.setAttribute('class','lote sts-'+d.sts+sel);
 }
 
 function updateStats(){
