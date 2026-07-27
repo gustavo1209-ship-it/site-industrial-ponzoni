@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Confirme sua presença — Lançamento Industrial Ponzoni</title>
+<meta name="description" content="Confirme sua presença no lançamento oficial do Industrial Ponzoni, um convite Sicredi. 26 de agosto, 19h, Agência Sicredi Clivatti, Nova Prata - RS.">
+<link rel="icon" href="ponzoni-favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--wine:#7A1020;--wine-dk:#4A0A12;--wine-lt:#961222;--gold:#C9A227;--cream:#F5EDE8;--cream-dk:#E0D0C8;--cream-lt:#FAF5F2;--text:#2A0A10;--text-lt:#7A5058;}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+html,body{height:100%;}
+body{
+  font-family:'Poppins','Myriad Pro','Trebuchet MS',Arial,sans-serif;
+  color:var(--text);
+  height:100vh;
+  height:100dvh;
+  background:linear-gradient(160deg,rgba(74,10,18,.55),rgba(122,16,32,.42) 55%,rgba(74,10,18,.58)),url('ponzoni-drone-bg.jpg') center/cover no-repeat fixed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(8px,2vh,24px) 16px;
+  overflow-y:auto;
+}
+.card{
+  width:100%;
+  max-width:440px;
+  max-height:100%;
+  background:var(--cream-lt);
+  border-radius:20px;
+  box-shadow:0 24px 60px rgba(0,0,0,.35);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.card-header{
+  background:var(--wine);
+  padding:clamp(12px,2.4vh,22px) 24px clamp(10px,1.8vh,16px);
+  text-align:center;
+}
+.brand-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:clamp(6px,1.2vh,10px);
+}
+.logo-ponzoni{
+  width:clamp(36px,6vh,44px);
+  height:clamp(36px,6vh,44px);
+  border-radius:9px;
+  display:block;
+  box-shadow:0 4px 10px rgba(0,0,0,.3);
+}
+.brand-divider{width:1px;height:22px;background:rgba(255,255,255,.32);}
+.logo-sicredi{height:15px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.95;}
+.card-header h1{
+  color:#fff;
+  font-size:clamp(18px,3.4vh,23px);
+  line-height:1.25;
+  margin:0 0 3px;
+  font-weight:600;
+  letter-spacing:.2px;
+}
+.card-header p{
+  color:rgba(255,255,255,.78);
+  font-size:12px;
+  margin:0;
+}
+.event-info{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(6px,1.2vh,10px);
+  padding:clamp(8px,1.6vh,14px) 24px;
+  background:var(--cream-dk);
+  border-bottom:1px solid rgba(122,16,32,.12);
+}
+.ei-row{display:flex;gap:10px;}
+.ei-item{
+  flex:1;
+  display:flex;
+  align-items:flex-start;
+  gap:7px;
+  font-size:12.5px;
+  color:var(--text);
+}
+.ei-item span.ic{font-size:15px;line-height:1.2;}
+.ei-item strong{display:block;font-size:12.5px;}
+.ei-item small{display:block;color:var(--text-lt);font-size:11px;line-height:1.35;}
+.card-body{padding:clamp(12px,2.2vh,20px) 24px clamp(10px,1.8vh,16px);}
+.card-body p.lead{
+  font-size:12.5px;
+  color:var(--text-lt);
+  margin:0 0 clamp(8px,1.6vh,14px);
+  text-align:center;
+}
+label{
+  display:block;
+  font-size:11.5px;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:4px;
+}
+.field{margin-bottom:clamp(8px,1.4vh,12px);}
+.field input{
+  width:100%;
+  padding:9px 12px;
+  border:1.5px solid var(--cream-dk);
+  border-radius:10px;
+  font-size:14px;
+  font-family:inherit;
+  color:var(--text);
+  background:#fff;
+  outline:none;
+  transition:border .15s;
+}
+.field input:focus{border-color:var(--wine);}
+.field small.hint{display:block;margin-top:4px;font-size:11px;color:var(--text-lt);}
+.field.error input{border-color:#C0392B;}
+.field .err-msg{display:none;color:#C0392B;font-size:11px;margin-top:4px;}
+.field.error .err-msg{display:block;}
+.hp-field{position:absolute;left:-9999px;top:-9999px;}
+button[type="submit"]{
+  width:100%;
+  padding:11px;
+  border:none;
+  border-radius:10px;
+  background:var(--wine);
+  color:#fff;
+  font-size:14.5px;
+  font-weight:700;
+  letter-spacing:.3px;
+  cursor:pointer;
+  transition:background .15s,transform .1s;
+  font-family:inherit;
+}
+button[type="submit"]:hover{background:var(--wine-lt);}
+button[type="submit"]:active{transform:scale(.98);}
+button[type="submit"]:disabled{opacity:.65;cursor:default;}
+.form-error{
+  display:none;
+  background:#FBEAEA;
+  color:#A32A2A;
+  border:1px solid #E4B8B8;
+  border-radius:10px;
+  padding:8px 10px;
+  font-size:12px;
+  margin-bottom:12px;
+}
+.form-error.show{display:block;}
+.success{
+  display:none;
+  text-align:center;
+  padding:6px 4px 2px;
+}
+.success.show{display:block;}
+.success .check{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--wine);
+  color:#fff;
+  font-size:22px;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 10px;
+}
+.success h2{font-size:17px;margin:0 0 6px;}
+.success p{font-size:13px;color:var(--text-lt);margin:0 0 4px;line-height:1.45;}
+.rsvp-form.hide{display:none;}
+.footer{
+  padding:clamp(8px,1.6vh,14px) 24px clamp(10px,1.8vh,16px);
+  text-align:center;
+  border-top:1px solid var(--cream-dk);
+}
+.footer a{
+  color:var(--wine);
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700;
+  margin:0 8px;
+}
+.footer a:hover{text-decoration:underline;}
+.footer .sicredi{
+  margin-top:clamp(6px,1.2vh,10px);
+  padding-top:clamp(6px,1.2vh,10px);
+  border-top:1px solid var(--cream-dk);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.footer .sicredi img{height:16px;width:auto;display:block;}
+.footer .sicredi span{
+  font-size:10px;
+  color:var(--text-lt);
+  text-align:left;
+  line-height:1.25;
+  max-width:170px;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-header">
+    <div class="brand-row">
+      <img class="logo-ponzoni" src="ponzoni-logo.jpg" alt="Industrial Ponzoni">
+      <span class="brand-divider"></span>
+      <img class="logo-sicredi" src="sicredi-logo.png" alt="Sicredi">
+    </div>
+    <h1>Palco de grandes negócios!</h1>
+    <p>Lançamento oficial do Industrial Ponzoni · um convite Sicredi</p>
+  </div>
+
+  <div class="event-info">
+    <div class="ei-row">
+      <div class="ei-item"><span class="ic">📅</span><span><strong>26 de agosto</strong><small>Quarta-feira</small></span></div>
+      <div class="ei-item"><span class="ic">🕖</span><span><strong>19h</strong><small>Horário local</small></span></div>
+    </div>
+    <div class="ei-item"><span class="ic">📍</span><span><strong>Agência Sicredi Clivatti</strong><small>R. Buarque de Macedo, 2830 — Nova Prata/RS</small></span></div>
+  </div>
+
+  <div class="card-body">
+
+    <div id="rsvpWrap">
+      <p class="lead">Confirme sua presença preenchendo os dados abaixo.</p>
+
+      <div id="formError" class="form-error">Não foi possível enviar sua confirmação. Verifique os dados e tente novamente.</div>
+
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+      <form id="rsvpForm" class="rsvp-form" action="https://script.google.com/macros/s/AKfycbzeFOslqXd7cviXLaypAAj5Lsfuf_kJTCKrd-HSExkZf7MtRRQesraYM4gg0UogSmuaSQ/exec" method="POST" target="hidden_iframe">
+        <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
+
+        <div class="field" id="fieldNome">
+          <label for="nome">Nome completo *</label>
+          <input type="text" id="nome" name="nome" required autocomplete="name">
+          <div class="err-msg">Informe seu nome.</div>
+        </div>
+
+        <div class="field" id="fieldEmail">
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+          <div class="err-msg">Informe um e-mail válido.</div>
+        </div>
+
+        <div class="field" id="fieldTelefone">
+          <label for="telefone">Telefone *</label>
+          <input type="tel" id="telefone" name="telefone" required autocomplete="tel" placeholder="(54) 99999-9999">
+          <div class="err-msg">Informe seu telefone.</div>
+        </div>
+
+        <button type="submit" id="submitBtn">Confirmar presença</button>
+      </form>
+    </div>
+
+    <div id="successMsg" class="success">
+      <div class="check">✓</div>
+      <h2>Presença confirmada!</h2>
+      <p>Obrigado por confirmar. Te esperamos dia <strong>26 de agosto, às 19h</strong>, na Agência Sicredi Clivatti.</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <a href="https://www.instagram.com/ponzoniindustrial/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/5554996098638?text=Ol%C3%A1%21%20Confirmei%20presen%C3%A7a%20no%20lan%C3%A7amento%20do%20Industrial%20Ponzoni%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener">WhatsApp</a>
+    <div class="sicredi">
+      <img src="sicredi-logo.png" alt="Sicredi">
+      <span>Seu parceiro para investir, crescer e empreender.</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var form = document.getElementById('rsvpForm');
+  var iframe = document.getElementById('hidden_iframe');
+  var submitBtn = document.getElementById('submitBtn');
+  var formError = document.getElementById('formError');
+  var rsvpWrap = document.getElementById('rsvpWrap');
+  var successMsg = document.getElementById('successMsg');
+  var submitted = false;
+  var timeoutId = null;
+
+  function setFieldError(fieldId, hasError){
+    var field = document.getElementById(fieldId);
+    if (hasError) field.classList.add('error');
+    else field.classList.remove('error');
+  }
+
+  function validate(){
+    var nome = form.nome.value.trim();
+    var email = form.email.value.trim();
+    var telefone = form.telefone.value.trim();
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    setFieldError('fieldNome', !nome);
+    setFieldError('fieldEmail', !emailOk);
+    setFieldError('fieldTelefone', !telefone);
+    return !!nome && emailOk && !!telefone;
+  }
+
+  iframe.addEventListener('load', function(){
+    if (!submitted) return;
+    if (timeoutId) clearTimeout(timeoutId);
+    showSuccess();
+  });
+
+  function showSuccess(){
+    rsvpWrap.style.display = 'none';
+    successMsg.classList.add('show');
+  }
+
+  form.addEventListener('submit', function(e){
+    formError.classList.remove('show');
+    if (!validate()){
+      e.preventDefault();
+      return;
+    }
+    submitted = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    timeoutId = setTimeout(showSuccess, 4000);
+  });
+})();
+</script>
+
+</body>
+</html>
