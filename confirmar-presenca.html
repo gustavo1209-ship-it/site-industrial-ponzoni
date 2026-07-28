@@ -29,13 +29,13 @@ body{
 .card{
   width:100%;
   max-width:440px;
-  max-height:100%;
   background:var(--cream-lt);
   border-radius:20px;
   box-shadow:0 24px 60px rgba(0,0,0,.35);
   overflow:hidden;
   display:flex;
   flex-direction:column;
+  flex-shrink:0;
 }
 .card-header{
   background:var(--wine);
@@ -60,16 +60,18 @@ body{
 .logo-sicredi{height:15px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.95;}
 .card-header h1{
   color:#fff;
-  font-size:clamp(18px,3.4vh,23px);
-  line-height:1.25;
+  font-size:clamp(16px,min(3.4vh,5.6vw),23px);
+  line-height:1.2;
   margin:0 0 3px;
   font-weight:600;
-  letter-spacing:.2px;
+  letter-spacing:0;
+  white-space:nowrap;
 }
 .card-header p{
   color:rgba(255,255,255,.78);
-  font-size:12px;
+  font-size:clamp(10px,min(1.7vh,2.9vw),12px);
   margin:0;
+  white-space:nowrap;
 }
 .event-info{
   display:flex;
@@ -199,6 +201,32 @@ button[type="submit"]:disabled{opacity:.65;cursor:default;}
   line-height:1.25;
   max-width:170px;
 }
+
+@media (max-width:480px), (max-height:720px){
+  body{padding:8px 12px;}
+  .card-header{padding:10px 16px 8px;}
+  .brand-row{gap:8px;margin-bottom:5px;}
+  .logo-ponzoni{width:30px;height:30px;border-radius:7px;}
+  .brand-divider{height:18px;}
+  .logo-sicredi{height:12px;}
+  .card-header h1{margin-bottom:2px;}
+  .event-info{padding:7px 16px;gap:5px;}
+  .ei-item{font-size:11px;gap:6px;}
+  .ei-item span.ic{font-size:13px;}
+  .ei-item strong{font-size:11px;}
+  .ei-item small{font-size:9.5px;}
+  .card-body{padding:8px 16px 6px;}
+  .card-body p.lead{font-size:11px;margin-bottom:6px;}
+  label{font-size:10px;margin-bottom:3px;}
+  .field{margin-bottom:6px;}
+  .field input{padding:7px 10px;font-size:13px;border-radius:9px;}
+  button[type="submit"]{padding:9px;font-size:13px;}
+  .footer{padding:6px 16px 8px;}
+  .footer a{font-size:11px;margin:0 6px;}
+  .footer .sicredi{margin-top:5px;padding-top:5px;gap:6px;}
+  .footer .sicredi img{height:14px;}
+  .footer .sicredi span{font-size:9px;}
+}
 </style>
 </head>
 <body>
@@ -211,7 +239,7 @@ button[type="submit"]:disabled{opacity:.65;cursor:default;}
       <img class="logo-sicredi" src="sicredi-logo.png" alt="Sicredi">
     </div>
     <h1>Palco de grandes negócios!</h1>
-    <p>Lançamento oficial do Industrial Ponzoni · um convite Sicredi</p>
+    <p>Lançamento oficial · um convite Sicredi</p>
   </div>
 
   <div class="event-info">
